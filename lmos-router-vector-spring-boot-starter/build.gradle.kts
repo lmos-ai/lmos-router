@@ -13,5 +13,5 @@ dependencies {
     testImplementation("org.springframework.ai:spring-ai-qdrant-store-spring-boot-starter:1.0.0-SNAPSHOT")
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.5")
     testImplementation("org.springframework.boot:spring-boot-starter-web:3.2.5")
-    testImplementation("org.testcontainers:qdrant:1.20.0")
+    testImplementation("org.testcontainers:qdrant:1.20.1")
 }
