@@ -195,7 +195,13 @@ private fun Process.readStream() =
 
 release {
     buildTasks = listOf("releaseBuild")
-    ignoredSnapshotDependencies = listOf("org.springframework.ai:spring-ai-bom", "org.springframework.ai:spring-ai-core", "org.springframework.ai:spring-ai-openai-spring-boot-starter", "org.springframework.ai:spring-ai-qdrant-store-spring-boot-starter")
+    ignoredSnapshotDependencies =
+        listOf(
+            "org.springframework.ai:spring-ai-bom",
+            "org.springframework.ai:spring-ai-core",
+            "org.springframework.ai:spring-ai-openai-spring-boot-starter",
+            "org.springframework.ai:spring-ai-qdrant-store-spring-boot-starter",
+        )
     newVersionCommitMessage = "New Snapshot-Version:"
     preTagCommitMessage = "Release:"
 }
