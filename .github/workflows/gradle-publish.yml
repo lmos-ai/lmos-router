@@ -56,7 +56,7 @@ jobs:
         next-version-increment-minor: true
 
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v4.1.0
 
     - name: Git init
       run: git config --global user.email "cicd@ancf.ai" && git config --global user.name "CICD"
