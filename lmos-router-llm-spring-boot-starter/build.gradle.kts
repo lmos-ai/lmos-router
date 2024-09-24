@@ -5,7 +5,7 @@
 dependencies {
     api(project(":lmos-router-core"))
     api(project(":lmos-router-llm"))
-    implementation("org.springframework.boot:spring-boot-autoconfigure:3.2.5")
+    implementation("org.springframework.boot:spring-boot-autoconfigure:3.3.4")
     implementation("org.springframework.boot:spring-boot-configuration-processor:3.2.5")
     implementation("org.springframework.ai:spring-ai-core:1.0.0-SNAPSHOT")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3")
