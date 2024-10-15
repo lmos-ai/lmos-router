@@ -6,7 +6,7 @@ SPDX-License-Identifier: CC-BY-4.0
 # lmos-router-llm-in-spring-cloud-gateway
 
 This project demonstrate the usage of super route core
-abstraction [AgentRoutingSpecsResolver](https://github.com/lmos-ai/lmos-router/blob/main/lmos-router-core/src/main/kotlin/io/github/lmos/route/core/AgentRoutingSpecsResolver.kt)
+abstraction [AgentRoutingSpecsResolver](https://github.com/lmos-ai/lmos-router/blob/main/lmos-router-core/src/main/kotlin/ai/ancf/lmos/router/core/AgentRoutingSpecsResolver.kt)
 
 ## Demonstration Setup View
 
@@ -32,7 +32,7 @@ curl --location 'http://localhost:8080/agents?userQuery=what%20are%20the%20best%
 
 ### AgentRoutingSpecsProvider
 
-[AgentRoutingSpecsProvider](https://github.com/lmos-ai/lmos-router/blob/main/lmos-router-core/src/main/kotlin/io/github/lmos/route/core/AgentRoutingSpecsProvider.kt)
+[AgentRoutingSpecsProvider](https://github.com/lmos-ai/lmos-router/blob/main/lmos-router-core/src/main/kotlin//ai/ancf/lmos/router/core/AgentRoutingSpecsProvider.kt)
 has been configured with `SimpleAgentRoutingSpecProvider`
 ```
 SimpleAgentRoutingSpecProvider().add(
