@@ -10,6 +10,6 @@ dependencies {
     implementation("org.springframework.ai:spring-ai-core:1.0.0-SNAPSHOT")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3")
     testImplementation("org.springframework.ai:spring-ai-openai-spring-boot-starter:1.0.0-SNAPSHOT")
-    testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.5")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:3.3.5")
     testImplementation("org.springframework.boot:spring-boot-starter-web:3.2.5")
 }
