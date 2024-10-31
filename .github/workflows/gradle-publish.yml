@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-
+    name: "Publish"
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -54,6 +54,9 @@ jobs:
         version-file: gradle.properties
         version-file-extraction-pattern: '(?<=version=).+'
         next-version-increment-minor: true
+
+    - name: Validate Gradle
+      uses: gradle/actions/wrapper-validation@v4.1.0
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
