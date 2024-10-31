@@ -20,6 +20,8 @@ plugins {
     id("com.vanniktech.maven.publish") version "0.29.0"
 }
 
+val springBootVersion by extra { "3.3.5" }
+
 group = "ai.ancf.lmos"
 
 subprojects {
