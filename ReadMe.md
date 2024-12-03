@@ -100,7 +100,7 @@ The Intelligent Agent Routing System directs user queries to the best-suited age
 
 ### LLM-Based Approach
 
-Uses advanced language models like OpenAI's GPT-3.5 to understand the context and semantics of user queries.
+Uses advanced language models like OpenAI's GPT-4o mini to understand the context and semantics of user queries.
 
 **Pros:**
 - Understands complex queries and context.

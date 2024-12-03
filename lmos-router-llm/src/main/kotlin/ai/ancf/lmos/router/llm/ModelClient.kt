@@ -84,7 +84,7 @@ class DefaultModelClient(private val defaultModelClientProperties: DefaultModelC
 data class DefaultModelClientProperties(
     val openAiUrl: String = "https://api.openai.com/v1/chat/completions",
     val openAiApiKey: String,
-    val model: String = "gpt-3.5-turbo",
+    val model: String = "gpt-4o-mini",
     val maxTokens: Int = 200,
     val temperature: Double = 0.0,
     val format: String = "json_object",

@@ -3,7 +3,7 @@ spring:
     openai:
       chat:
         options:
-          model: gpt-3.5-turbo
+          model: gpt-4o-mini
           response-format: json_object
         enabled: true
       api-key: ${OPENAI_API_KEY}
