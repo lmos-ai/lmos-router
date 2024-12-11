@@ -57,7 +57,13 @@ subprojects {
     java {
         sourceCompatibility = JavaVersion.VERSION_17
         withSourcesJar()
-        // withJavadocJar()
+        withJavadocJar()
+    }
+
+    tasks.named<Jar>("javadocJar") {
+        dependsOn(tasks.dokkaJavadoc)
+        from(tasks.dokkaJavadoc.flatMap { it.outputDirectory })
+        archiveClassifier.set("javadoc")
     }
 
     dependencies {
@@ -75,12 +81,6 @@ subprojects {
         if (!runFlowTests) {
             exclude("**/*Flow*")
         }
-    }
-
-    val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
-        dependsOn(tasks.dokkaJavadoc)
-        from(tasks.dokkaJavadoc.flatMap { it.outputDirectory })
-        archiveClassifier.set("javadoc")
     }
 
     mavenPublishing {
