@@ -3,6 +3,11 @@ SPDX-FileCopyrightText: 2023 www.contributor-covenant.org
 
 SPDX-License-Identifier: CC-BY-4.0
 -->
+![Build Status](https://github.com/lmos-ai/lmos-router/actions/workflows/gradle.yml/badge.svg)
+[![Gradle Package](https://github.com/lmos-ai/lmos-router/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/lmos-ai/lmos-router/actions/workflows/gradle-publish.yml)
+[![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+
 # Intelligent Agent Routing System
 
 ## Quickstart Guide
