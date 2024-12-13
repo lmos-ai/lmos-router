@@ -5,10 +5,10 @@
 package ai.ancf.lmos.router.vector.starter
 
 import io.mockk.junit5.MockKExtension
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 
 @ExtendWith(MockKExtension::class)
 class SpringVectorSearchClientPropertiesTest {
@@ -45,7 +45,7 @@ class SpringVectorSearchClientPropertiesTest {
     @Test
     fun `should throw an exception for invalid threshold`() {
         val exception =
-            assertFailsWith<IllegalArgumentException> {
+            assertThrows<IllegalArgumentException> {
                 SpringVectorSearchClientProperties(threshold = -1.0)
             }
         assertEquals("threshold must be between 0.0 and 1.0", exception.message)
@@ -54,7 +54,7 @@ class SpringVectorSearchClientPropertiesTest {
     @Test
     fun `should throw an exception for invalid topK`() {
         val exception =
-            assertFailsWith<IllegalArgumentException> {
+            assertThrows<IllegalArgumentException> {
                 SpringVectorSearchClientProperties(topK = -1)
             }
         assertEquals("topK must be a positive integer", exception.message)

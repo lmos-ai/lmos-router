@@ -11,10 +11,10 @@ import ai.ancf.lmos.router.llm.LLMAgentRoutingSpecsResolver
 import ai.ancf.lmos.router.llm.ModelClient
 import ai.ancf.lmos.router.llm.ModelPromptProvider
 import io.mockk.mockk
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.ai.chat.model.ChatModel
-import kotlin.test.assertEquals
 
 class LLMAgentRoutingSpecsResolverAutoConfigurationTest {
     private lateinit var properties: LLMAgentRoutingSpecsResolverProperties
