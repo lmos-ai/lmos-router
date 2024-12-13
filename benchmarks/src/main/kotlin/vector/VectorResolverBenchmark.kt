@@ -4,11 +4,6 @@
 
 package vector
 
-import ai.ancf.lmos.router.core.Context
-import ai.ancf.lmos.router.core.JsonAgentRoutingSpecsProvider
-import ai.ancf.lmos.router.core.UserMessage
-import ai.ancf.lmos.router.core.getOrNull
-import ai.ancf.lmos.router.vector.*
 import io.ktor.client.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Semaphore
@@ -17,6 +12,11 @@ import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import org.apache.commons.csv.CSVPrinter
 import org.apache.commons.csv.CSVRecord
+import org.eclipse.lmos.router.core.Context
+import org.eclipse.lmos.router.core.JsonAgentRoutingSpecsProvider
+import org.eclipse.lmos.router.core.UserMessage
+import org.eclipse.lmos.router.core.getOrNull
+import org.eclipse.lmos.router.vector.*
 import java.io.File
 import java.io.FileReader
 import java.io.FileWriter

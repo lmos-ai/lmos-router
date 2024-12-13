@@ -2,12 +2,12 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.llm
+package org.eclipse.lmos.router.llm
 
-import ai.ancf.lmos.router.core.*
 import com.azure.ai.openai.OpenAIClientBuilder
 import com.azure.ai.openai.models.*
 import com.azure.core.credential.AzureKeyCredential
+import org.eclipse.lmos.router.core.*
 
 /**
  * The [ModelClient] interface represents a client that can call a model.

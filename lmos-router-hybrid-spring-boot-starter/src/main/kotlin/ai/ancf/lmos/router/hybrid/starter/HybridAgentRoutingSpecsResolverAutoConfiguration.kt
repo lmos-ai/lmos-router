@@ -2,18 +2,18 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.hybrid.starter
+package org.eclipse.lmos.router.hybrid.starter
 
-import ai.ancf.lmos.router.core.AgentRoutingSpecsProvider
-import ai.ancf.lmos.router.core.JsonAgentRoutingSpecsProvider
-import ai.ancf.lmos.router.hybrid.HybridAgentRoutingSpecsResolver
-import ai.ancf.lmos.router.hybrid.ModelToVectorQueryConverter
-import ai.ancf.lmos.router.hybrid.NoOpModelToVectorQueryConverter
-import ai.ancf.lmos.router.llm.ExternalModelPromptProvider
-import ai.ancf.lmos.router.llm.ModelClient
-import ai.ancf.lmos.router.llm.ModelPromptProvider
-import ai.ancf.lmos.router.vector.VectorSearchClient
-import ai.ancf.lmos.router.vector.VectorSeedClient
+import org.eclipse.lmos.router.core.AgentRoutingSpecsProvider
+import org.eclipse.lmos.router.core.JsonAgentRoutingSpecsProvider
+import org.eclipse.lmos.router.hybrid.HybridAgentRoutingSpecsResolver
+import org.eclipse.lmos.router.hybrid.ModelToVectorQueryConverter
+import org.eclipse.lmos.router.hybrid.NoOpModelToVectorQueryConverter
+import org.eclipse.lmos.router.llm.ExternalModelPromptProvider
+import org.eclipse.lmos.router.llm.ModelClient
+import org.eclipse.lmos.router.llm.ModelPromptProvider
+import org.eclipse.lmos.router.vector.VectorSearchClient
+import org.eclipse.lmos.router.vector.VectorSeedClient
 import org.springframework.ai.chat.model.ChatModel
 import org.springframework.ai.vectorstore.VectorStore
 import org.springframework.boot.autoconfigure.AutoConfiguration

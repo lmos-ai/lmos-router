@@ -2,9 +2,9 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.vector
+package org.eclipse.lmos.router.vector
 
-import ai.ancf.lmos.router.core.*
+import org.eclipse.lmos.router.core.*
 
 /**
  * An implementation of AgentSpecResolver that resolves agent specs using a vector similarity search.

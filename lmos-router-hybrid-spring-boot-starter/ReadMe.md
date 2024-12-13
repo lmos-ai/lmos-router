@@ -29,7 +29,7 @@ Ensure you have the necessary dependencies in your `build.gradle` or `pom.xml` f
 
 ```kotlin
 dependencies {
-    implementation("ai.ancf.lmos:lmos-router-hybrid-spring-boot-starter:1.0.0")
+    implementation("org.eclipse.lmos:lmos-router-hybrid-spring-boot-starter:1.0.0")
 }
 ```
 
@@ -55,7 +55,7 @@ route:
 The module provides auto-configuration, so you only need to inject the `HybridAgentRoutingSpecsResolver` where needed.
 
 ```kotlin
-import ai.ancf.lmos.router.hybrid.HybridAgentRoutingSpecsResolver
+import org.eclipse.lmos.router.hybrid.HybridAgentRoutingSpecsResolver
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -101,8 +101,8 @@ The module provides the following beans:
 To seed the vector store with agent routing specifications, use the `VectorSeedClient`.
 
 ```kotlin
-import ai.ancf.lmos.router.vector.VectorSeedClient
-import ai.ancf.lmos.router.vector.VectorSeedRequest
+import org.eclipse.lmos.router.vector.VectorSeedClient
+import org.eclipse.lmos.router.vector.VectorSeedRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -126,7 +126,7 @@ class VectorSeedService {
 To resolve agents based on user queries, use the `HybridAgentRoutingSpecsResolver`.
 
 ```kotlin
-import ai.ancf.lmos.router.hybrid.HybridAgentRoutingSpecsResolver
+import org.eclipse.lmos.router.hybrid.HybridAgentRoutingSpecsResolver
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

@@ -6,7 +6,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
-rootProject.name = "ai.ancf.lmos-router"
+rootProject.name = "org.eclipse.lmos-router"
 include("lmos-router-core")
 include("lmos-router-llm")
 include("lmos-router-llm-spring-boot-starter")

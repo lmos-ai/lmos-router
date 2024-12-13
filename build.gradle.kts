@@ -23,7 +23,7 @@ plugins {
 val springBootVersion by extra { "3.3.5" }
 
 subprojects {
-    group = "ai.ancf.lmos"
+    group = "org.eclipse.lmos"
 
     apply(plugin = "kotlin")
     apply(plugin = "kotlinx-serialization")
@@ -85,12 +85,12 @@ subprojects {
         pom {
             name = "LMOS Router"
             description = "Efficient Agent Routing with SOTA Language and Embedding Models."
-            url = "https://github.com/lmos-ai/lmos-router"
+            url = "https://github.com/eclipse-lmos/lmos-router"
             licenses {
                 license {
                     name = "Apache-2.0"
                     distribution = "repo"
-                    url = "https://github.com/lmos-ai/lmos-router/blob/main/LICENSES/Apache-2.0.txt"
+                    url = "https://github.com/eclipse-lmos/lmos-router/blob/main/LICENSES/Apache-2.0.txt"
                 }
             }
             developers {
@@ -111,14 +111,14 @@ subprojects {
                 }
             }
             scm {
-                url = "https://github.com/lmos-ai/lmos-router.git"
+                url = "https://github.com/eclipse-lmos/lmos-router.git"
             }
         }
 
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = URI("https://maven.pkg.github.com/lmos-ai/lmos-router")
+                url = URI("https://maven.pkg.github.com/eclipse-lmos/lmos-router")
                 credentials {
                     username = findProperty("GITHUB_USER")?.toString() ?: getenv("GITHUB_USER")
                     password = findProperty("GITHUB_TOKEN")?.toString() ?: getenv("GITHUB_TOKEN")

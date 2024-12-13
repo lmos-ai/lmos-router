@@ -1,1 +1,1 @@
-ai.ancf.lmos.router.llm.starter.LLMAgentRoutingSpecsResolverAutoConfiguration
+org.eclipse.lmos.router.llm.starter.LLMAgentRoutingSpecsResolverAutoConfiguration

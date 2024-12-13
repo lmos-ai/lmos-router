@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.llm.starter
+package org.eclipse.lmos.router.llm.starter
 
-import ai.ancf.lmos.router.core.*
-import ai.ancf.lmos.router.llm.ModelClient
+import org.eclipse.lmos.router.core.*
+import org.eclipse.lmos.router.llm.ModelClient
 import org.springframework.ai.chat.model.ChatModel
 import org.springframework.ai.chat.prompt.Prompt
 

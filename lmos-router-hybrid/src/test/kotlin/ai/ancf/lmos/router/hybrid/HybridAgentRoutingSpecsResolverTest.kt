@@ -2,25 +2,25 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.hybrid
+package org.eclipse.lmos.router.hybrid
 
-import ai.ancf.lmos.router.core.AgentRoutingSpec
-import ai.ancf.lmos.router.core.AgentRoutingSpecsProvider
-import ai.ancf.lmos.router.core.AssistantMessage
-import ai.ancf.lmos.router.core.ChatMessage
-import ai.ancf.lmos.router.core.Context
-import ai.ancf.lmos.router.core.SpecFilter
-import ai.ancf.lmos.router.core.Success
-import ai.ancf.lmos.router.core.UserMessage
-import ai.ancf.lmos.router.core.getOrThrow
-import ai.ancf.lmos.router.llm.ModelClient
-import ai.ancf.lmos.router.llm.ModelPromptProvider
-import ai.ancf.lmos.router.vector.VectorSearchClient
-import ai.ancf.lmos.router.vector.VectorSearchClientResponse
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.spyk
 import io.mockk.verify
+import org.eclipse.lmos.router.core.AgentRoutingSpec
+import org.eclipse.lmos.router.core.AgentRoutingSpecsProvider
+import org.eclipse.lmos.router.core.AssistantMessage
+import org.eclipse.lmos.router.core.ChatMessage
+import org.eclipse.lmos.router.core.Context
+import org.eclipse.lmos.router.core.SpecFilter
+import org.eclipse.lmos.router.core.Success
+import org.eclipse.lmos.router.core.UserMessage
+import org.eclipse.lmos.router.core.getOrThrow
+import org.eclipse.lmos.router.llm.ModelClient
+import org.eclipse.lmos.router.llm.ModelPromptProvider
+import org.eclipse.lmos.router.vector.VectorSearchClient
+import org.eclipse.lmos.router.vector.VectorSearchClientResponse
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

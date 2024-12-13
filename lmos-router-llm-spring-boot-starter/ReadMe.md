@@ -34,7 +34,7 @@ The `LLM Agent Routing Starter` module simplifies the integration of the LLM-bas
 1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/lmos-ai/lmos-router.git
+    git clone https://github.com/eclipse-lmos/lmos-router.git
     cd lmos-router
     ```
 

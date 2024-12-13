@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import ai.ancf.lmos.router.core.AgentRoutingSpecsResolver
-import ai.ancf.lmos.router.core.Context
-import ai.ancf.lmos.router.core.UserMessage
-import ai.ancf.lmos.router.core.getOrThrow
-import ai.ancf.lmos.router.llm.starter.LLMAgentRoutingSpecsResolverAutoConfiguration
+import org.eclipse.lmos.router.core.AgentRoutingSpecsResolver
+import org.eclipse.lmos.router.core.Context
+import org.eclipse.lmos.router.core.UserMessage
+import org.eclipse.lmos.router.core.getOrThrow
+import org.eclipse.lmos.router.llm.starter.LLMAgentRoutingSpecsResolverAutoConfiguration
 import org.junit.jupiter.api.Test
 import org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration
 import org.springframework.beans.factory.annotation.Autowired

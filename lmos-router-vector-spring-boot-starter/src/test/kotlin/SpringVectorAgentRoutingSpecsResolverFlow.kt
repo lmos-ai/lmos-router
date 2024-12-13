@@ -2,14 +2,14 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import ai.ancf.lmos.router.core.*
-import ai.ancf.lmos.router.vector.VectorAgentRoutingSpecsResolver
-import ai.ancf.lmos.router.vector.VectorSeedClient
-import ai.ancf.lmos.router.vector.VectorSeedRequest
-import ai.ancf.lmos.router.vector.starter.VectorAgentRoutingSpecsResolverAutoConfiguration
 import io.qdrant.client.QdrantClient
 import io.qdrant.client.grpc.Collections
 import kotlinx.serialization.json.Json
+import org.eclipse.lmos.router.core.*
+import org.eclipse.lmos.router.vector.VectorAgentRoutingSpecsResolver
+import org.eclipse.lmos.router.vector.VectorSeedClient
+import org.eclipse.lmos.router.vector.VectorSeedRequest
+import org.eclipse.lmos.router.vector.starter.VectorAgentRoutingSpecsResolverAutoConfiguration
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

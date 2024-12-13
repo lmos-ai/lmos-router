@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.core
+package org.eclipse.lmos.router.core
 
 import org.slf4j.LoggerFactory.getLogger
 import java.util.*

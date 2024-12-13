@@ -3,8 +3,8 @@ SPDX-FileCopyrightText: 2023 www.contributor-covenant.org
 
 SPDX-License-Identifier: CC-BY-4.0
 -->
-![Build Status](https://github.com/lmos-ai/lmos-router/actions/workflows/gradle.yml/badge.svg)
-[![Gradle Package](https://github.com/lmos-ai/lmos-router/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/lmos-ai/lmos-router/actions/workflows/gradle-publish.yml)
+![Build Status](https://github.com/eclipse-lmos/lmos-router/actions/workflows/gradle.yml/badge.svg)
+[![Gradle Package](https://github.com/eclipse-lmos/lmos-router/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/eclipse-lmos/lmos-router/actions/workflows/gradle-publish.yml)
 [![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
@@ -19,7 +19,7 @@ This quickstart guide will help you set up and use the agent routing system. Fol
 First, download lmos-router dependency from maven central
 
 ```kotlin
-implementation("ai.ancf.lmos:lmos-router-llm:x.y.z")
+implementation("org.eclipse.lmos:lmos-router-llm:x.y.z")
 ```
 
 then create the agent routing specifications using `SimpleAgentRoutingSpecProvider` and `AgentRoutingSpecBuilder`.
@@ -251,14 +251,14 @@ You can download the dependencies from maven central by adding the following dep
 ### LLM-Based Approach Spring Boot Starter
 
 ```kotlin
-implementation("ai.ancf.lmos:lmos-router-llm-spring-boot-starter:x.y.z")
+implementation("org.eclipse.lmos:lmos-router-llm-spring-boot-starter:x.y.z")
 ```
 
 Or using Maven:
 
 ```xml
 <dependency>
-    <groupId>ai.ancf.lmos</groupId>
+    <groupId>org.eclipse.lmos</groupId>
     <artifactId>lmos-router-llm-spring-boot-starter</artifactId>
     <version>x.y.z</version>
 </dependency>
@@ -267,14 +267,14 @@ Or using Maven:
 ### Vector-Based Approach Spring Boot Starter
 
 ```kotlin
-implementation("ai.ancf.lmos:lmos-router-vector-spring-boot-starter:x.y.z")
+implementation("org.eclipse.lmos:lmos-router-vector-spring-boot-starter:x.y.z")
 ```
 
 Or using Maven:
 
 ```xml
 <dependency>
-    <groupId>ai.ancf.lmos</groupId>
+    <groupId>org.eclipse.lmos</groupId>
     <artifactId>lmos-router-vector-spring-boot-starter</artifactId>
     <version>x.y.z</version>
 </dependency>
@@ -283,14 +283,14 @@ Or using Maven:
 ### Hybrid Approach Spring Boot Starter
 
 ```kotlin
-implementation("ai.ancf.lmos:lmos-router-hybrid-spring-boot-starter:x.y.z")
+implementation("org.eclipse.lmos:lmos-router-hybrid-spring-boot-starter:x.y.z")
 ```
 
 Or using Maven:
 
 ```xml
 <dependency>
-    <groupId>ai.ancf.lmos</groupId>
+    <groupId>org.eclipse.lmos</groupId>
     <artifactId>lmos-router-hybrid-spring-boot-starter</artifactId>
     <version>x.y.z</version>
 </dependency>
@@ -303,19 +303,19 @@ If you are not using Spring Boot, you can add the following dependencies:
 #### LLM-Based Approach
 
 ```kotlin
-implementation("ai.ancf.lmos:lmos-router-llm:x.y.z")
+implementation("org.eclipse.lmos:lmos-router-llm:x.y.z")
 ```
 
 #### Vector-Based Approach
 
 ```kotlin
-implementation("ai.ancf.lmos:lmos-router-vector:x.y.z")
+implementation("org.eclipse.lmos:lmos-router-vector:x.y.z")
 ```
 
 #### Hybrid Approach
 
 ```kotlin
-implementation("ai.ancf.lmos:lmos-router-hybrid:x.y.z")
+implementation("org.eclipse.lmos:lmos-router-hybrid:x.y.z")
 ```
 
 or you can build the project from source:
@@ -323,7 +323,7 @@ or you can build the project from source:
 1. **Clone the repository**:
 
 ```bash
-git clone https://github.com/lmos-ai/lmos-router.git
+git clone https://github.com/eclipse-lmos/lmos-router.git
 cd lmos-router
 ```
 

@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.vector.starter
+package org.eclipse.lmos.router.vector.starter
 
-import ai.ancf.lmos.router.core.AgentRoutingSpecsProvider
-import ai.ancf.lmos.router.core.JsonAgentRoutingSpecsProvider
-import ai.ancf.lmos.router.vector.VectorAgentRoutingSpecsResolver
-import ai.ancf.lmos.router.vector.VectorSearchClient
-import ai.ancf.lmos.router.vector.VectorSeedClient
+import org.eclipse.lmos.router.core.AgentRoutingSpecsProvider
+import org.eclipse.lmos.router.core.JsonAgentRoutingSpecsProvider
+import org.eclipse.lmos.router.vector.VectorAgentRoutingSpecsResolver
+import org.eclipse.lmos.router.vector.VectorSearchClient
+import org.eclipse.lmos.router.vector.VectorSeedClient
 import org.springframework.ai.vectorstore.VectorStore
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean

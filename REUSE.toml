@@ -5,7 +5,7 @@
 version = 1
 SPDX-PackageName = "arc"
 SPDX-PackageSupplier = "Deutsche Telekom AG <opensource@telekom.de>"
-SPDX-PackageDownloadLocation = "https://github.com/lmos-ai/lmos-router"
+SPDX-PackageDownloadLocation = "https://github.com/eclipse-lmos/lmos-router"
 
 [[annotations]]
 path = [".gitignore", ".editorconfig", "**/main/resources/META-INF/**", "**/test/resources/META-INF/**", "**/test/resources/*.json", "**/test/resources/*.txt", "**/test/resources/*.yml"]

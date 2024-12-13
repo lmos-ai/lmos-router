@@ -2,17 +2,17 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.vector.starter
+package org.eclipse.lmos.router.vector.starter
 
-import ai.ancf.lmos.router.core.AgentRoutingSpec
-import ai.ancf.lmos.router.core.Failure
-import ai.ancf.lmos.router.core.Result
-import ai.ancf.lmos.router.core.Success
-import ai.ancf.lmos.router.vector.VectorClientException
-import ai.ancf.lmos.router.vector.VectorRouteConstants.Companion.AGENT_FIELD_NAME
-import ai.ancf.lmos.router.vector.VectorSearchClient
-import ai.ancf.lmos.router.vector.VectorSearchClientRequest
-import ai.ancf.lmos.router.vector.VectorSearchClientResponse
+import org.eclipse.lmos.router.core.AgentRoutingSpec
+import org.eclipse.lmos.router.core.Failure
+import org.eclipse.lmos.router.core.Result
+import org.eclipse.lmos.router.core.Success
+import org.eclipse.lmos.router.vector.VectorClientException
+import org.eclipse.lmos.router.vector.VectorRouteConstants.Companion.AGENT_FIELD_NAME
+import org.eclipse.lmos.router.vector.VectorSearchClient
+import org.eclipse.lmos.router.vector.VectorSearchClientRequest
+import org.eclipse.lmos.router.vector.VectorSearchClientResponse
 import org.springframework.ai.vectorstore.SearchRequest
 import org.springframework.ai.vectorstore.VectorStore
 import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder

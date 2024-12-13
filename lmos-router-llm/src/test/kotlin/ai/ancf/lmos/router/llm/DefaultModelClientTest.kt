@@ -2,9 +2,8 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.llm
+package org.eclipse.lmos.router.llm
 
-import ai.ancf.lmos.router.core.*
 import com.azure.ai.openai.OpenAIClient
 import com.azure.ai.openai.OpenAIClientBuilder
 import com.azure.ai.openai.models.ChatChoice
@@ -15,6 +14,7 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkConstructor
 import io.mockk.verify
+import org.eclipse.lmos.router.core.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

@@ -2,15 +2,15 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.vector.starter
+package org.eclipse.lmos.router.vector.starter
 
-import ai.ancf.lmos.router.core.Failure
-import ai.ancf.lmos.router.core.Result
-import ai.ancf.lmos.router.core.Success
-import ai.ancf.lmos.router.vector.VectorClientException
-import ai.ancf.lmos.router.vector.VectorRouteConstants.Companion.AGENT_FIELD_NAME
-import ai.ancf.lmos.router.vector.VectorSeedClient
-import ai.ancf.lmos.router.vector.VectorSeedRequest
+import org.eclipse.lmos.router.core.Failure
+import org.eclipse.lmos.router.core.Result
+import org.eclipse.lmos.router.core.Success
+import org.eclipse.lmos.router.vector.VectorClientException
+import org.eclipse.lmos.router.vector.VectorRouteConstants.Companion.AGENT_FIELD_NAME
+import org.eclipse.lmos.router.vector.VectorSeedClient
+import org.eclipse.lmos.router.vector.VectorSeedRequest
 import org.springframework.ai.document.Document
 import org.springframework.ai.vectorstore.VectorStore
 

@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.hybrid.starter
+package org.eclipse.lmos.router.hybrid.starter
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

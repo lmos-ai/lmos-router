@@ -2,12 +2,12 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.vector
+package org.eclipse.lmos.router.vector
 
-import ai.ancf.lmos.router.core.*
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import org.eclipse.lmos.router.core.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

@@ -2,15 +2,15 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.hybrid.starter
+package org.eclipse.lmos.router.hybrid.starter
 
-import ai.ancf.lmos.router.core.*
-import ai.ancf.lmos.router.vector.VectorClientException
-import ai.ancf.lmos.router.vector.VectorRouteConstants.Companion.AGENT_FIELD_NAME
-import ai.ancf.lmos.router.vector.VectorSearchClientRequest
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import org.eclipse.lmos.router.core.*
+import org.eclipse.lmos.router.vector.VectorClientException
+import org.eclipse.lmos.router.vector.VectorRouteConstants.Companion.AGENT_FIELD_NAME
+import org.eclipse.lmos.router.vector.VectorSearchClientRequest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach

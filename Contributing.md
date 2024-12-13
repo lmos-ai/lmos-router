@@ -21,11 +21,11 @@ We welcome contributions to the Intelligent Agent Routing System! Whether you're
 
 ### Reporting Bugs
 
-If you find a bug, please report it by creating an issue in the [issue tracker](https://github.com/lmos-ai/lmos-router/issues). Include as much detail as possible to help us diagnose and fix the problem quickly.
+If you find a bug, please report it by creating an issue in the [issue tracker](https://github.com/eclipse-lmos/lmos-router/issues). Include as much detail as possible to help us diagnose and fix the problem quickly.
 
 ### Suggesting Enhancements
 
-If you have an idea for a new feature or an improvement, please open an issue in the [issue tracker](https://github.com/lmos-ai/lmos-router/issues) to discuss it before starting any work. This helps us coordinate efforts and avoid duplicate work.
+If you have an idea for a new feature or an improvement, please open an issue in the [issue tracker](https://github.com/eclipse-lmos/lmos-router/issues) to discuss it before starting any work. This helps us coordinate efforts and avoid duplicate work.
 
 ### Submitting Pull Requests
 
@@ -47,7 +47,7 @@ If you have an idea for a new feature or an improvement, please open an issue in
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/lmos-ai/lmos-router.git
+    git clone https://github.com/eclipse-lmos/lmos-router.git
     cd lmos-router
     ```
 
@@ -114,6 +114,6 @@ If you have an idea for a new feature or an improvement, please open an issue in
 
 ## Reporting Issues
 
-If you encounter any issues, please report them in the [issue tracker](https://github.com/lmos-ai/lmos-router/issues). Provide as much detail as possible, including steps to reproduce the issue, your environment, and any relevant logs or screenshots.
+If you encounter any issues, please report them in the [issue tracker](https://github.com/eclipse-lmos/lmos-router/issues). Provide as much detail as possible, including steps to reproduce the issue, your environment, and any relevant logs or screenshots.
 
 Thank you for contributing to the Intelligent Agent Routing System!

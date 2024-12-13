@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.demo.gateway
+package org.eclipse.lmos.router.demo.gateway
 
-import ai.ancf.lmos.router.core.*
-import ai.ancf.lmos.router.llm.LLMAgentRoutingSpecsResolver
+import org.eclipse.lmos.router.core.*
+import org.eclipse.lmos.router.llm.LLMAgentRoutingSpecsResolver
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.cloud.gateway.route.RouteLocator

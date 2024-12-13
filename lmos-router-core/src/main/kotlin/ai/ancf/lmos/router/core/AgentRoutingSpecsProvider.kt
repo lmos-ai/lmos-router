@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package ai.ancf.lmos.router.core
+package org.eclipse.lmos.router.core
 
 import kotlinx.serialization.json.Json
 import java.io.File

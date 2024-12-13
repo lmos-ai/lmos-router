@@ -2,21 +2,21 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import ai.ancf.lmos.router.core.*
-import ai.ancf.lmos.router.hybrid.HybridAgentRoutingSpecsResolver
-import ai.ancf.lmos.router.hybrid.ModelToVectorQueryConverter
-import ai.ancf.lmos.router.llm.DefaultModelClient
-import ai.ancf.lmos.router.llm.DefaultModelClientProperties
-import ai.ancf.lmos.router.llm.ExternalModelPromptProvider
-import ai.ancf.lmos.router.vector.DefaultEmbeddingClient
-import ai.ancf.lmos.router.vector.DefaultEmbeddingClientProperties
-import ai.ancf.lmos.router.vector.DefaultVectorClient
-import ai.ancf.lmos.router.vector.DefaultVectorClientProperties
-import ai.ancf.lmos.router.vector.EmbeddingClient
-import ai.ancf.lmos.router.vector.VectorSearchClientRequest
 import io.ktor.client.HttpClient
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import org.eclipse.lmos.router.core.*
+import org.eclipse.lmos.router.hybrid.HybridAgentRoutingSpecsResolver
+import org.eclipse.lmos.router.hybrid.ModelToVectorQueryConverter
+import org.eclipse.lmos.router.llm.DefaultModelClient
+import org.eclipse.lmos.router.llm.DefaultModelClientProperties
+import org.eclipse.lmos.router.llm.ExternalModelPromptProvider
+import org.eclipse.lmos.router.vector.DefaultEmbeddingClient
+import org.eclipse.lmos.router.vector.DefaultEmbeddingClientProperties
+import org.eclipse.lmos.router.vector.DefaultVectorClient
+import org.eclipse.lmos.router.vector.DefaultVectorClientProperties
+import org.eclipse.lmos.router.vector.EmbeddingClient
+import org.eclipse.lmos.router.vector.VectorSearchClientRequest
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
