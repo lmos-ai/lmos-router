@@ -9,8 +9,8 @@ import ai.ancf.lmos.router.vector.VectorSearchClientRequest
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
 
 class ModelToVectorQueryConverterTest {
     @Test

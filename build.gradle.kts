@@ -10,7 +10,7 @@ import java.lang.System.getenv
 import java.net.URI
 
 plugins {
-    kotlin("jvm") version "2.0.21"
+    kotlin("jvm") version "2.0.21" apply false
     kotlin("plugin.serialization") version "1.9.23" apply false
     id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
     id("org.jetbrains.kotlinx.kover") version "0.8.3"
@@ -22,9 +22,9 @@ plugins {
 
 val springBootVersion by extra { "3.3.5" }
 
-group = "ai.ancf.lmos"
-
 subprojects {
+    group = "ai.ancf.lmos"
+
     apply(plugin = "kotlin")
     apply(plugin = "kotlinx-serialization")
     apply(plugin = "org.cyclonedx.bom")
@@ -50,29 +50,24 @@ subprojects {
         }
     }
 
-    kotlin {
-        jvmToolchain(17)
-    }
-
     java {
         sourceCompatibility = JavaVersion.VERSION_17
-        withSourcesJar()
-        withJavadocJar()
     }
 
-    tasks.named<Jar>("javadocJar") {
+    val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
         dependsOn(tasks.dokkaJavadoc)
         from(tasks.dokkaJavadoc.flatMap { it.outputDirectory })
         archiveClassifier.set("javadoc")
     }
 
     dependencies {
-        testImplementation(kotlin("test"))
-        testImplementation("io.mockk:mockk:1.13.13")
+        "testImplementation"("org.junit.jupiter:junit-jupiter:5.11.3")
+        "testImplementation"("org.assertj:assertj-core:3.26.3")
+        "testImplementation"("io.mockk:mockk:1.13.13")
     }
 
-    tasks.test {
-        useJUnitPlatform()
+    tasks.named("dokkaJavadoc") {
+        mustRunAfter("checksum")
     }
 
     tasks.withType<Test> {
@@ -131,21 +126,6 @@ subprojects {
             }
         }
     }
-}
-
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.named<Jar>("jar") {
-    enabled = false
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(17)
 }
 
 repositories {

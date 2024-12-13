@@ -10,7 +10,7 @@ import kotlinx.serialization.json.Json
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import kotlin.test.assertFailsWith
+import org.junit.jupiter.api.assertThrows
 
 class VectorSearchClientRequestTest {
     private lateinit var context: Context
@@ -74,7 +74,7 @@ class VectorClientExceptionTest {
         val message = "An error occurred"
 
         val exception =
-            assertFailsWith<VectorClientException> {
+            assertThrows<VectorClientException> {
                 throw VectorClientException(message)
             }
 

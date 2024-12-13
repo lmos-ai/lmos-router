@@ -6,8 +6,8 @@ package ai.ancf.lmos.router.hybrid
 
 import ai.ancf.lmos.router.core.Context
 import io.mockk.mockk
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
 
 class NoOpModelToVectorQueryConverterTest {
     @Test

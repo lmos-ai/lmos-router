@@ -4,10 +4,10 @@
 
 package ai.ancf.lmos.router.vector
 
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import kotlin.math.sqrt
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 
 class CosineSimilarityTest {
     @Test
@@ -18,7 +18,7 @@ class CosineSimilarityTest {
 
         // When & Then
         val exception =
-            assertFailsWith<IllegalArgumentException> {
+            assertThrows<IllegalArgumentException> {
                 vectorA.cosineSimilarity(vectorB)
             }
         assertEquals("Vectors must be of the same length", exception.message)
