@@ -7,6 +7,7 @@ package ai.ancf.lmos.router.llm
 import ai.ancf.lmos.router.core.*
 import io.mockk.every
 import io.mockk.mockk
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
