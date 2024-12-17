@@ -59,7 +59,7 @@ abstract class ModelClientProperties(
  * @param format The format.
  */
 data class DefaultModelClientProperties(
-    val openAiUrl: String = "https://api.openai.com/v1/chat/completions",
+    val openAiUrl: String = "https://api.openai.com/v1",
     val openAiApiKey: String,
     override val model: String = "gpt-4o-mini",
     override val maxTokens: Int = 200,
