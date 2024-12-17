@@ -34,10 +34,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@cc4fc85e6b35bafd578d5ffbc76a5518407e1af0
@@ -50,10 +50,10 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
       # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
       # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
