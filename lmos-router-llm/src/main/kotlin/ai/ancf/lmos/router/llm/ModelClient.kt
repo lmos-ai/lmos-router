@@ -5,9 +5,6 @@
 package ai.ancf.lmos.router.llm
 
 import ai.ancf.lmos.router.core.*
-import com.azure.ai.openai.OpenAIClientBuilder
-import com.azure.ai.openai.models.*
-import com.azure.core.credential.AzureKeyCredential
 
 /**
  * The [ModelClient] interface represents a client that can call a model.
@@ -29,47 +26,27 @@ interface ModelClient {
  *
  * @param defaultModelClientProperties The properties for the default model client.
  */
-class DefaultModelClient(private val defaultModelClientProperties: DefaultModelClientProperties) : ModelClient {
-    private var client =
-        OpenAIClientBuilder()
-            .credential(AzureKeyCredential(defaultModelClientProperties.openAiApiKey))
-            .endpoint(defaultModelClientProperties.openAiUrl)
-            .buildClient()
-
+class DefaultModelClient(
+    private val defaultModelClientProperties: DefaultModelClientProperties,
+    private val delegate: LangChainModelClient =
+        LangChainModelClient(LangChainChatModelFactory.createClient(defaultModelClientProperties)),
+) : ModelClient {
     override fun call(messages: List<ChatMessage>): Result<ChatMessage, AgentRoutingSpecResolverException> {
-        try {
-            val chatCompletionsOptions =
-                ChatCompletionsOptions(
-                    messages.map {
-                        when (it) {
-                            is UserMessage -> ChatRequestUserMessage(it.content)
-                            is AssistantMessage -> ChatRequestAssistantMessage(it.content)
-                            is SystemMessage -> ChatRequestSystemMessage(it.content)
-                            else -> throw AgentRoutingSpecResolverException("Unknown message type")
-                        }
-                    },
-                ).setTemperature(defaultModelClientProperties.temperature)
-                    .setModel(defaultModelClientProperties.model)
-                    .setMaxTokens(defaultModelClientProperties.maxTokens)
-                    .apply {
-                        defaultModelClientProperties.format.let {
-                            responseFormat = ChatCompletionsJsonResponseFormat()
-                        }
-                    }
-
-            return Success(
-                AssistantMessage(
-                    client.getChatCompletions(
-                        defaultModelClientProperties.model,
-                        chatCompletionsOptions,
-                    ).choices.first().message.content,
-                ),
-            )
-        } catch (e: Exception) {
-            return Failure(AgentRoutingSpecResolverException("Failed to call model", e))
-        }
+        return delegate.call(messages)
     }
 }
+
+abstract class ModelClientProperties(
+    open val provider: String,
+    open val apiKey: String?,
+    open val url: String,
+    open val model: String,
+    open val maxTokens: Int,
+    open val temperature: Double,
+    open val format: String,
+    open val topK: Int = 0,
+    open val topP: Double = 0.0,
+)
 
 /**
  * The [DefaultModelClientProperties] data class represents the properties for the default model client.
@@ -84,8 +61,19 @@ class DefaultModelClient(private val defaultModelClientProperties: DefaultModelC
 data class DefaultModelClientProperties(
     val openAiUrl: String = "https://api.openai.com/v1/chat/completions",
     val openAiApiKey: String,
-    val model: String = "gpt-4o-mini",
-    val maxTokens: Int = 200,
-    val temperature: Double = 0.0,
-    val format: String = "json_object",
-)
+    override val model: String = "gpt-4o-mini",
+    override val maxTokens: Int = 200,
+    override val temperature: Double = 0.0,
+    override val format: String = "json_object",
+    override val apiKey: String? = openAiApiKey,
+    override val url: String = openAiUrl,
+    override val provider: String = "openai",
+) : ModelClientProperties(
+        provider,
+        apiKey,
+        url,
+        model,
+        maxTokens,
+        temperature,
+        format,
+    )
