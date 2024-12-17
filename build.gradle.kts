@@ -46,12 +46,12 @@ subprojects {
         kotlinOptions {
             freeCompilerArgs += "-Xjsr305=strict"
             freeCompilerArgs += "-Xcontext-receivers"
-            jvmTarget = "17"
+            jvmTarget = "21"
         }
     }
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
     }
 
     val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
