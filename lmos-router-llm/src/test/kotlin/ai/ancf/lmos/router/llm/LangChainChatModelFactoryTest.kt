@@ -33,7 +33,7 @@ class LangChainChatModelFactoryTest {
         every { properties.temperature } returns 0.7
         every { properties.topP } returns 0.9
         every { properties.topK } returns 50
-        every { properties.format } returns "json"
+        every { properties.format } returns "json_object"
 
         // Act
         val client = LangChainChatModelFactory.createClient(properties)
@@ -106,27 +106,6 @@ class LangChainChatModelFactoryTest {
     }
 
     @Test
-    fun `createClient should return OpenAiChatModel for GROQ provider`() {
-        // Arrange
-        val properties = mockk<ModelClientProperties>()
-        every { properties.provider } returns LangChainClientProvider.GROQ.name.lowercase()
-        every { properties.url } returns "https://api.groq.com"
-        every { properties.apiKey } returns "groq-api-key"
-        every { properties.model } returns "groq-model"
-        every { properties.maxTokens } returns 1200
-        every { properties.temperature } returns 0.65
-        every { properties.topP } returns 0.75
-        every { properties.topK } returns 45
-        every { properties.format } returns "xml"
-
-        // Act
-        val client = LangChainChatModelFactory.createClient(properties)
-
-        // Assert
-        assertTrue(client is OpenAiChatModel)
-    }
-
-    @Test
     fun `createClient should return OpenAiChatModel for OTHER provider`() {
         // Arrange
         val properties = mockk<ModelClientProperties>()
@@ -138,7 +117,7 @@ class LangChainChatModelFactoryTest {
         every { properties.temperature } returns 0.8
         every { properties.topP } returns 0.95
         every { properties.topK } returns 60
-        every { properties.format } returns "markdown"
+        every { properties.format } returns "json_object"
 
         // Act
         val client = LangChainChatModelFactory.createClient(properties)

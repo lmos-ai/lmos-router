@@ -58,7 +58,6 @@ class LangChainChatModelFactory private constructor() {
         fun createClient(properties: ModelClientProperties): ChatLanguageModel {
             return when (properties.provider) {
                 LangChainClientProvider.OPENAI.name.lowercase(),
-                LangChainClientProvider.GROQ.name.lowercase(),
                 LangChainClientProvider.OTHER.name.lowercase(),
                 -> {
                     OpenAiChatModelBuilder().baseUrl(properties.url)
@@ -114,6 +113,5 @@ enum class LangChainClientProvider {
     ANTHROPIC,
     GEMINI,
     OLLAMA,
-    GROQ,
     OTHER,
 }
