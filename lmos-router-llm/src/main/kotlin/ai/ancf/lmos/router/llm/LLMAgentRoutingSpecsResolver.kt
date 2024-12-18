@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory
  * @param modelPromptProvider The provider of model prompts.
  * @param modelClient The client for the language model.
  * @param serializer The JSON serializer.
+ * @param modelClientResponseProcessor The processor for the model client response.
  */
 class LLMAgentRoutingSpecsResolver(
     override val agentRoutingSpecsProvider: AgentRoutingSpecsProvider,
@@ -34,6 +35,7 @@ class LLMAgentRoutingSpecsResolver(
             ignoreUnknownKeys = true
             isLenient = true
         },
+    private val modelClientResponseProcessor: ModelClientResponseProcessor = DefaultModelClientResponseProcessor(),
 ) : AgentRoutingSpecsResolver {
     private val log = LoggerFactory.getLogger(LLMAgentRoutingSpecsResolver::class.java)
 
@@ -62,7 +64,10 @@ class LLMAgentRoutingSpecsResolver(
             messages.add(input)
 
             log.trace("Fetching agent spec completion")
-            val response: String = modelClient.call(messages).getOrThrow().content
+            var response: String = modelClient.call(messages).getOrThrow().content
+
+            response = modelClientResponseProcessor.process(response)
+
             val agent: ModelClientResponse = serializer.decodeFromString(serializer(), response)
 
             log.trace("Agent resolved: ${agent.agentName}")
