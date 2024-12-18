@@ -50,54 +50,85 @@ class LangChainModelClient(
  * - ANTHROPIC
  * - GEMINI
  * - OLLAMA
- * - GROQ
- * - OTHER (for other providers which are have OpenAI compatible API)
+ * - OTHER (for other providers which have OpenAI compatible API)
  */
 class LangChainChatModelFactory private constructor() {
     companion object {
         fun createClient(properties: ModelClientProperties): ChatLanguageModel {
             return when (properties.provider) {
                 LangChainClientProvider.OPENAI.name.lowercase(),
-                LangChainClientProvider.OTHER.name.lowercase(),
                 -> {
-                    OpenAiChatModelBuilder().baseUrl(properties.url)
-                        .apiKey(properties.apiKey)
-                        .modelName(properties.model)
-                        .maxTokens(properties.maxTokens)
-                        .temperature(properties.temperature)
-                        .responseFormat(properties.format)
-                        .topP(properties.topP)
-                        .build()
+                    val model =
+                        OpenAiChatModelBuilder()
+                            .apiKey(properties.apiKey)
+                            .modelName(properties.model)
+                            .maxTokens(properties.maxTokens)
+                            .temperature(properties.temperature)
+
+                    properties.topP?.let { model.topP(it) }
+                    properties.format.takeIf { it != null }?.let { model.responseFormat(it) }
+
+                    model.build()
                 }
 
                 LangChainClientProvider.ANTHROPIC.name.lowercase() -> {
-                    AnthropicChatModel.builder().baseUrl(properties.url)
-                        .apiKey(properties.apiKey)
-                        .modelName(properties.model)
-                        .maxTokens(properties.maxTokens)
-                        .temperature(properties.temperature)
-                        .topP(properties.topP)
-                        .topK(properties.topK)
-                        .build()
+                    val model =
+                        AnthropicChatModel.builder()
+                            .apiKey(properties.apiKey)
+                            .modelName(properties.model)
+                            .maxTokens(properties.maxTokens)
+                            .temperature(properties.temperature)
+
+                    properties.topP?.let { model.topP(it) }
+                    properties.topK?.let { model.topK(it) }
+
+                    model.build()
                 }
 
                 LangChainClientProvider.GEMINI.name.lowercase() -> {
-                    GoogleAiGeminiChatModel.builder()
-                        .apiKey(properties.apiKey)
-                        .modelName(properties.model)
-                        .maxOutputTokens(properties.maxTokens)
-                        .temperature(properties.temperature)
-                        .topK(properties.topK)
-                        .topP(properties.topP)
-                        .responseFormat(ResponseFormat.builder().type(ResponseFormatType.valueOf(properties.format)).build())
-                        .build()
+                    val model =
+                        GoogleAiGeminiChatModel.builder()
+                            .modelName(properties.model)
+                            .maxOutputTokens(properties.maxTokens)
+                            .temperature(properties.temperature)
+                            .topK(properties.topK)
+                            .topP(properties.topP)
+
+                    properties.format.takeIf { it != null }?.let {
+                        model.responseFormat(
+                            ResponseFormat.builder()
+                                .type(ResponseFormatType.valueOf(it))
+                                .build(),
+                        )
+                    }
+                    properties.apiKey?.let { model.apiKey(it) }
+                    properties.topK?.let { model.topK(it) }
+                    properties.topP?.let { model.topP(it) }
+
+                    model.build()
                 }
 
                 LangChainClientProvider.OLLAMA.name.lowercase() -> {
-                    OllamaChatModel.builder().baseUrl(properties.url)
+                    OllamaChatModel.builder().baseUrl(properties.baseUrl)
                         .modelName(properties.model)
                         .temperature(properties.temperature)
                         .build()
+                }
+
+                LangChainClientProvider.OTHER.name.lowercase() -> {
+                    require(properties.baseUrl != null) { "baseUrl is required for OTHER provider" }
+
+                    val model =
+                        OpenAiChatModelBuilder()
+                            .baseUrl(properties.baseUrl)
+                            .apiKey(properties.apiKey)
+                            .modelName(properties.model)
+                            .maxTokens(properties.maxTokens)
+                            .temperature(properties.temperature)
+                    properties.topP?.let { model.topP(it) }
+                    properties.format.takeIf { it != null }?.let { model.responseFormat(it) }
+
+                    model.build()
                 }
 
                 else -> {

@@ -26,7 +26,7 @@ class LangChainChatModelFactoryTest {
         // Arrange
         val properties = mockk<ModelClientProperties>()
         every { properties.provider } returns LangChainClientProvider.OPENAI.name.lowercase()
-        every { properties.url } returns "https://api.openai.com"
+        every { properties.baseUrl } returns "https://api.openai.com"
         every { properties.apiKey } returns "openai-api-key"
         every { properties.model } returns "gpt-3.5-turbo"
         every { properties.maxTokens } returns 1000
@@ -47,7 +47,7 @@ class LangChainChatModelFactoryTest {
         // Arrange
         val properties = mockk<ModelClientProperties>()
         every { properties.provider } returns LangChainClientProvider.ANTHROPIC.name.lowercase()
-        every { properties.url } returns "https://api.anthropic.com"
+        every { properties.baseUrl } returns "https://api.anthropic.com"
         every { properties.apiKey } returns "anthropic-api-key"
         every { properties.model } returns "claude-v1"
         every { properties.maxTokens } returns 1500
@@ -68,7 +68,7 @@ class LangChainChatModelFactoryTest {
         // Arrange
         val properties = mockk<ModelClientProperties>()
         every { properties.provider } returns LangChainClientProvider.GEMINI.name.lowercase()
-        every { properties.url } returns "" // Gemini model does not use baseUrl
+        every { properties.baseUrl } returns "" // Gemini model does not use baseUrl
         every { properties.apiKey } returns "gemini-api-key"
         every { properties.model } returns "gemini-1"
         every { properties.maxTokens } returns 2000
@@ -89,7 +89,7 @@ class LangChainChatModelFactoryTest {
         // Arrange
         val properties = mockk<ModelClientProperties>()
         every { properties.provider } returns LangChainClientProvider.OLLAMA.name.lowercase()
-        every { properties.url } returns "http://localhost:11434"
+        every { properties.baseUrl } returns "http://localhost:11434"
         every { properties.apiKey } returns "" // Ollama model does not require API key
         every { properties.model } returns "ollama-model"
         every { properties.maxTokens } returns 0 // Ollama model does not use maxTokens
@@ -110,7 +110,7 @@ class LangChainChatModelFactoryTest {
         // Arrange
         val properties = mockk<ModelClientProperties>()
         every { properties.provider } returns LangChainClientProvider.OTHER.name.lowercase()
-        every { properties.url } returns "https://api.other.com"
+        every { properties.baseUrl } returns "https://api.other.com"
         every { properties.apiKey } returns "other-api-key"
         every { properties.model } returns "other-model"
         every { properties.maxTokens } returns 800
@@ -131,7 +131,7 @@ class LangChainChatModelFactoryTest {
         // Arrange
         val properties = mockk<ModelClientProperties>()
         every { properties.provider } returns "unknown_provider"
-        every { properties.url } returns "https://api.unknown.com"
+        every { properties.baseUrl } returns "https://api.unknown.com"
         every { properties.apiKey } returns "unknown-api-key"
         every { properties.model } returns "unknown-model"
         every { properties.maxTokens } returns 500
@@ -153,7 +153,7 @@ class LangChainChatModelFactoryTest {
         // Arrange
         val properties = mockk<ModelClientProperties>()
         every { properties.provider } returns ""
-        every { properties.url } returns "https://api.null.com"
+        every { properties.baseUrl } returns "https://api.null.com"
         every { properties.apiKey } returns "null-api-key"
         every { properties.model } returns "null-model"
         every { properties.maxTokens } returns 500

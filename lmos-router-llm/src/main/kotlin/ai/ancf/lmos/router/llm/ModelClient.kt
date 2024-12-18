@@ -36,16 +36,16 @@ class DefaultModelClient(
     }
 }
 
-abstract class ModelClientProperties(
+open class ModelClientProperties(
     open val provider: String,
-    open val apiKey: String?,
-    open val url: String,
+    open val apiKey: String? = null,
+    open val baseUrl: String? = null,
     open val model: String,
-    open val maxTokens: Int,
-    open val temperature: Double,
-    open val format: String,
-    open val topK: Int = 0,
-    open val topP: Double = 0.0,
+    open val maxTokens: Int = 2000,
+    open val temperature: Double = 0.0,
+    open val format: String? = null,
+    open val topK: Int? = null,
+    open val topP: Double? = null,
 )
 
 /**
@@ -66,14 +66,45 @@ data class DefaultModelClientProperties(
     override val temperature: Double = 0.0,
     override val format: String = "json_object",
     override val apiKey: String? = openAiApiKey,
-    override val url: String = openAiUrl,
+    override val baseUrl: String = openAiUrl,
     override val provider: String = "openai",
 ) : ModelClientProperties(
         provider,
         apiKey,
-        url,
+        baseUrl,
         model,
         maxTokens,
         temperature,
         format,
     )
+
+/**
+ * This interface represents a model response processor.
+ *
+ * The objective is to process the response from the model and return agentSpec compliant json.
+ */
+interface ModelClientResponseProcessor {
+    fun process(modelResponse: String): String
+}
+
+/**
+ * This class is a default implementation of the ModelResponseProcessor interface.
+ *
+ * The processResponse method processes the response from the model.
+ *
+ * By default, it cleans the response and remove ```json and <answer> tags. Refer default prompt for more information.
+ */
+class DefaultModelClientResponseProcessor : ModelClientResponseProcessor {
+    override fun process(modelResponse: String): String {
+        var response = modelResponse.trim()
+
+        if (response.contains("```json")) {
+            response = response.substringAfter("```json").substringBefore("```").trim()
+        }
+
+        if (response.contains("<answer>")) {
+            response = response.substringAfter("<answer>").substringBefore("</answer>").trim()
+        }
+        return response
+    }
+}
