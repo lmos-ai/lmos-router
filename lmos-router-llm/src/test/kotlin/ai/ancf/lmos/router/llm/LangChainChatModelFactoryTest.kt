@@ -28,7 +28,7 @@ class LangChainChatModelFactoryTest {
         every { properties.provider } returns LangChainClientProvider.OPENAI.name.lowercase()
         every { properties.baseUrl } returns "https://api.openai.com"
         every { properties.apiKey } returns "openai-api-key"
-        every { properties.model } returns "gpt-3.5-turbo"
+        every { properties.model } returns "gpt-4o-mini"
         every { properties.maxTokens } returns 1000
         every { properties.temperature } returns 0.7
         every { properties.topP } returns 0.9
