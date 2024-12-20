@@ -256,7 +256,7 @@ Configure the `DefaultModelClientProperties` or `ModelClientProperties` based on
 val properties = ModelClientProperties(
     provider = LangChainClientProvider.OPENAI.name.lowercase(),
     apiKey = "your-openai-api-key",
-    model = "gpt-4",
+    model = "gpt-4o",
     maxTokens = 1500,
     temperature = 0.7,
     topP = 0.9,
