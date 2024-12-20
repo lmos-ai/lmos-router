@@ -211,7 +211,7 @@ For enhanced flexibility and support for multiple language model providers, you 
 val langChainProperties = ModelClientProperties(
     provider = LangChainClientProvider.OPENAI.name.lowercase(),
     apiKey = "your-openai-api-key",
-    model = "gpt-4",
+    model = "gpt-4o",
     maxTokens = 1500,
     temperature = 0.7,
     topP = 0.9,
