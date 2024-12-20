@@ -4,9 +4,6 @@
 
 package org.eclipse.lmos.router.llm
 
-import com.azure.ai.openai.OpenAIClientBuilder
-import com.azure.ai.openai.models.*
-import com.azure.core.credential.AzureKeyCredential
 import org.eclipse.lmos.router.core.*
 
 /**
@@ -29,47 +26,27 @@ interface ModelClient {
  *
  * @param defaultModelClientProperties The properties for the default model client.
  */
-class DefaultModelClient(private val defaultModelClientProperties: DefaultModelClientProperties) : ModelClient {
-    private var client =
-        OpenAIClientBuilder()
-            .credential(AzureKeyCredential(defaultModelClientProperties.openAiApiKey))
-            .endpoint(defaultModelClientProperties.openAiUrl)
-            .buildClient()
-
+class DefaultModelClient(
+    private val defaultModelClientProperties: DefaultModelClientProperties,
+    private val delegate: LangChainModelClient =
+        LangChainModelClient(LangChainChatModelFactory.createClient(defaultModelClientProperties)),
+) : ModelClient {
     override fun call(messages: List<ChatMessage>): Result<ChatMessage, AgentRoutingSpecResolverException> {
-        try {
-            val chatCompletionsOptions =
-                ChatCompletionsOptions(
-                    messages.map {
-                        when (it) {
-                            is UserMessage -> ChatRequestUserMessage(it.content)
-                            is AssistantMessage -> ChatRequestAssistantMessage(it.content)
-                            is SystemMessage -> ChatRequestSystemMessage(it.content)
-                            else -> throw AgentRoutingSpecResolverException("Unknown message type")
-                        }
-                    },
-                ).setTemperature(defaultModelClientProperties.temperature)
-                    .setModel(defaultModelClientProperties.model)
-                    .setMaxTokens(defaultModelClientProperties.maxTokens)
-                    .apply {
-                        defaultModelClientProperties.format.let {
-                            responseFormat = ChatCompletionsJsonResponseFormat()
-                        }
-                    }
-
-            return Success(
-                AssistantMessage(
-                    client.getChatCompletions(
-                        defaultModelClientProperties.model,
-                        chatCompletionsOptions,
-                    ).choices.first().message.content,
-                ),
-            )
-        } catch (e: Exception) {
-            return Failure(AgentRoutingSpecResolverException("Failed to call model", e))
-        }
+        return delegate.call(messages)
     }
 }
+
+open class ModelClientProperties(
+    open val provider: String,
+    open val apiKey: String? = null,
+    open val baseUrl: String? = null,
+    open val model: String,
+    open val maxTokens: Int = 2000,
+    open val temperature: Double = 0.0,
+    open val format: String? = null,
+    open val topK: Int? = null,
+    open val topP: Double? = null,
+)
 
 /**
  * The [DefaultModelClientProperties] data class represents the properties for the default model client.
@@ -82,10 +59,52 @@ class DefaultModelClient(private val defaultModelClientProperties: DefaultModelC
  * @param format The format.
  */
 data class DefaultModelClientProperties(
-    val openAiUrl: String = "https://api.openai.com/v1/chat/completions",
+    val openAiUrl: String = "https://api.openai.com/v1",
     val openAiApiKey: String,
-    val model: String = "gpt-4o-mini",
-    val maxTokens: Int = 200,
-    val temperature: Double = 0.0,
-    val format: String = "json_object",
-)
+    override val model: String = "gpt-4o-mini",
+    override val maxTokens: Int = 200,
+    override val temperature: Double = 0.0,
+    override val format: String = "json_object",
+    override val apiKey: String? = openAiApiKey,
+    override val baseUrl: String = openAiUrl,
+    override val provider: String = "openai",
+) : ModelClientProperties(
+        provider,
+        apiKey,
+        baseUrl,
+        model,
+        maxTokens,
+        temperature,
+        format,
+    )
+
+/**
+ * This interface represents a model response processor.
+ *
+ * The objective is to process the response from the model and return agentSpec compliant json.
+ */
+interface ModelClientResponseProcessor {
+    fun process(modelResponse: String): String
+}
+
+/**
+ * This class is a default implementation of the ModelResponseProcessor interface.
+ *
+ * The processResponse method processes the response from the model.
+ *
+ * By default, it cleans the response and remove ```json and <answer> tags. Refer default prompt for more information.
+ */
+class DefaultModelClientResponseProcessor : ModelClientResponseProcessor {
+    override fun process(modelResponse: String): String {
+        var response = modelResponse.trim()
+
+        if (response.contains("```json")) {
+            response = response.substringAfter("```json").substringBefore("```").trim()
+        }
+
+        if (response.contains("<answer>")) {
+            response = response.substringAfter("<answer>").substringBefore("</answer>").trim()
+        }
+        return response
+    }
+}
