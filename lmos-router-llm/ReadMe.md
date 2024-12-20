@@ -169,7 +169,7 @@ The `LangChainClientProvider` enum lists the supported language model providers.
 val defaultModelClientProperties = DefaultModelClientProperties(
     openAiUrl = "https://api.openai.com/v1/chat/completions",
     openAiApiKey = "your-openai-api-key",
-    model = "gpt-4",
+    model = "gpt-4o",
     maxTokens = 1500,
     temperature = 0.7,
     format = "json"
