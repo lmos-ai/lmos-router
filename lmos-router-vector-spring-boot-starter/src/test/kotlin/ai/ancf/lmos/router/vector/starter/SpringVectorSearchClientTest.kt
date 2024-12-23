@@ -78,7 +78,7 @@ class SpringVectorSearchClientTest {
         every {
             vectorStore.similaritySearch(any<SearchRequest>())
         } returns listOf(mockDocument)
-        every { mockDocument.content } returns "document_content"
+        every { mockDocument.text } returns "document_content"
         every { mockDocument.metadata[AGENT_FIELD_NAME] } returns "test_agent"
 
         val result = springVectorSearchClient.find(request, agentRoutingSpecs)
