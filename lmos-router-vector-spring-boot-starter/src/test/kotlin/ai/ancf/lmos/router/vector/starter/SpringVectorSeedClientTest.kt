@@ -42,9 +42,9 @@ class SpringVectorSeedClientTest {
         // Assert
         assertTrue(result is Success)
         assertEquals(2, vectorDocumentsSlot.captured.size)
-        assertEquals("text1", vectorDocumentsSlot.captured[0].content)
+        assertEquals("text1", vectorDocumentsSlot.captured[0].text)
         assertEquals("agent1", vectorDocumentsSlot.captured[0].metadata[AGENT_FIELD_NAME])
-        assertEquals("text2", vectorDocumentsSlot.captured[1].content)
+        assertEquals("text2", vectorDocumentsSlot.captured[1].text)
         assertEquals("agent2", vectorDocumentsSlot.captured[1].metadata[AGENT_FIELD_NAME])
         verify { vectorStore.add(any()) }
     }

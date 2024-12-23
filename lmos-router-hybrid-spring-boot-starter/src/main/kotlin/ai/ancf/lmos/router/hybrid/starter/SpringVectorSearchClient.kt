@@ -40,25 +40,25 @@ class SpringVectorSearchClient(
         return try {
             val documents =
                 vectorStore.similaritySearch(
-                    SearchRequest.query(request.query)
-                        .withSimilarityThreshold(springVectorSearchClientProperties.threshold)
-                        .withTopK(springVectorSearchClientProperties.topK)
-                        .withFilterExpression(
+                    SearchRequest.builder().query(request.query)
+                        .similarityThreshold(springVectorSearchClientProperties.threshold)
+                        .topK(springVectorSearchClientProperties.topK)
+                        .filterExpression(
                             FilterExpressionBuilder().`in`(
                                 AGENT_FIELD_NAME,
                                 *agentRoutingSpecs.map { it.name }.toTypedArray(),
                             ).build(),
-                        ),
+                        ).build(),
                 )
-            if (documents.isEmpty()) {
+            if (documents?.isEmpty() == true) {
                 Success(null)
             } else {
-                val grouped = documents.groupBy { it.metadata[AGENT_FIELD_NAME] as String }
-                val agentName = grouped.maxByOrNull { it.value.size }?.key
+                val grouped = documents?.groupBy { it.metadata[AGENT_FIELD_NAME] as String }
+                val agentName = grouped?.maxByOrNull { it.value.size }?.key
                 if (agentName != null) {
                     Success(
                         VectorSearchClientResponse(
-                            grouped.getValue(agentName).joinToString("\n") { it.content },
+                            grouped.getValue(agentName).joinToString("\n") { it.text ?: "" },
                             agentName,
                         ),
                     )
