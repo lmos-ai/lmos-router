@@ -79,7 +79,7 @@ subprojects {
     }
 
     mavenPublishing {
-        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+        publishToMavenCentral(SonatypeHost.DEFAULT)
         signAllPublications()
 
         pom {
