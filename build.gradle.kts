@@ -76,6 +76,8 @@ subprojects {
         if (!runFlowTests) {
             exclude("**/*Flow*")
         }
+
+        useJUnitPlatform()
     }
 
     mavenPublishing {
