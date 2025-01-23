@@ -144,6 +144,46 @@ class SampleLLMFlow {
     }
 
     @Test
+    fun `sample test with external prompt agent spec in json format with azure openai model`() {
+        require(System.getenv("AZURE_OPENAI_API_KEY") != null) {
+            "Please set the AZURE_OPENAI_API_KEY environment variable to run the tests"
+        }
+
+        require(System.getenv("AZURE_OPENAI_BASE_URL") != null) {
+            "Please set the AZURE_OPENAI_BASE_URL environment variable to run the tests"
+        }
+
+        require(System.getenv("AZURE_OPENAI_MODEL") != null) {
+            "Please set the AZURE_OPENAI_MODEL environment variable to run the tests"
+        }
+
+        val routingSpecsResolver =
+            LLMAgentRoutingSpecsResolver(
+                JsonAgentRoutingSpecsProvider(jsonFilePath = "src/test/resources/agentRoutingSpecs.json"),
+                ExternalModelPromptProvider(
+                    "src/test/resources/prompt_agentRoutingSpec_json.txt",
+                    AgentRoutingSpecListType.JSON,
+                ),
+                modelClient =
+                    LangChainModelClient(
+                        LangChainChatModelFactory.createClient(
+                            ModelClientProperties(
+                                provider = "azure_openai",
+                                apiKey = System.getenv("AZURE_OPENAI_API_KEY"),
+                                baseUrl = System.getenv("AZURE_OPENAI_BASE_URL"),
+                                model = System.getenv("AZURE_OPENAI_MODEL"),
+                            ),
+                        ),
+                    ),
+            )
+        val context = Context(listOf(AssistantMessage("Hello")))
+        val input = UserMessage("Can you help me find a new phone?")
+        val result = routingSpecsResolver.resolve(context, input)
+        assert(result is Success)
+        assert((result as Success).getOrNull()?.name == "offer-agent")
+    }
+
+    @Test
     fun `sample test with external prompt agent spec in json format with ollama model`() {
         val routingSpecsResolver =
             LLMAgentRoutingSpecsResolver(

@@ -8,6 +8,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3")
     implementation("dev.langchain4j:langchain4j-open-ai:0.36.2")
     implementation("dev.langchain4j:langchain4j-anthropic:0.36.2")
+    implementation("dev.langchain4j:langchain4j-azure-open-ai:0.36.2")
     implementation("dev.langchain4j:langchain4j-google-ai-gemini:0.36.2")
     implementation("dev.langchain4j:langchain4j-ollama:0.36.2")
 }
