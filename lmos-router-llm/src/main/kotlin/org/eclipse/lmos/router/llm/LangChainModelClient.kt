@@ -14,6 +14,7 @@ import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel
 import dev.langchain4j.model.ollama.OllamaChatModel
 import dev.langchain4j.model.openai.OpenAiChatModel.OpenAiChatModelBuilder
 import org.eclipse.lmos.router.core.*
+import org.eclipse.lmos.router.llm.LangChainClientProvider.AZURE_OPENAI
 
 /**
  * A model client that uses Langchain4j(https://docs.langchain4j.dev/) to call a language model.
@@ -86,8 +87,8 @@ class LangChainChatModelFactory private constructor() {
                     model.build()
                 }
 
-                LangChainClientProvider.AZURE_OPENAI.name.lowercase() -> {
-                    require(properties.baseUrl != null) { "baseUrl is required for '${LangChainClientProvider.AZURE_OPENAI.name.lowercase()}' provider" }
+                AZURE_OPENAI.name.lowercase() -> {
+                    require(properties.baseUrl != null) { "baseUrl is required for '${AZURE_OPENAI.name.lowercase()}' provider" }
 
                     val model =
                         AzureOpenAiChatModel.builder()
