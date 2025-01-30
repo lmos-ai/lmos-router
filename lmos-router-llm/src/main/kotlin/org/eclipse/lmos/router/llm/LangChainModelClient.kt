@@ -6,6 +6,7 @@ package org.eclipse.lmos.router.llm
 
 import dev.langchain4j.data.message.AiMessage
 import dev.langchain4j.model.anthropic.AnthropicChatModel
+import dev.langchain4j.model.azure.AzureOpenAiChatModel
 import dev.langchain4j.model.chat.ChatLanguageModel
 import dev.langchain4j.model.chat.request.ResponseFormat
 import dev.langchain4j.model.chat.request.ResponseFormatType
@@ -85,6 +86,22 @@ class LangChainChatModelFactory private constructor() {
                     model.build()
                 }
 
+                LangChainClientProvider.AZURE_OPENAI.name.lowercase() -> {
+                    require(properties.baseUrl != null) { "baseUrl is required for '${LangChainClientProvider.AZURE_OPENAI.name.lowercase()}' provider" }
+
+                    val model =
+                        AzureOpenAiChatModel.builder()
+                            .endpoint(properties.baseUrl)
+                            .apiKey(properties.apiKey)
+                            .deploymentName(properties.model)
+                            .maxTokens(properties.maxTokens)
+                            .temperature(properties.temperature)
+
+                    properties.topP?.let { model.topP(it) }
+
+                    model.build()
+                }
+
                 LangChainClientProvider.GEMINI.name.lowercase() -> {
                     val model =
                         GoogleAiGeminiChatModel.builder()
@@ -142,6 +159,7 @@ class LangChainChatModelFactory private constructor() {
 enum class LangChainClientProvider {
     OPENAI,
     ANTHROPIC,
+    AZURE_OPENAI,
     GEMINI,
     OLLAMA,
     OTHER,
